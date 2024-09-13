@@ -1,15 +1,8 @@
-terraform {
-  required_providers {
-    docker = {
-      source  = "kreuzwerker/docker"
-      version = "3.0.2"
-    }
-  }
-}
-resource "aws_ec2_host" "host" {
+resource "aws_ec2_host" "host2" {
   availability_zone = "us-west-2a"
+  instance_type     = "t2.micro"
 }
 
-resource "docker_image" "ww" {
-  name = ""
+resource "docker_image" "ww2" {
+  name = "ubuntu:precise"
 }

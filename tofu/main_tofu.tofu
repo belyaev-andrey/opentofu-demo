@@ -1,15 +1,5 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "5.54.1"
-    }
-  }
-}
-
 provider "docker" {
-  ca_material = ";sd"
-
+  ca_material = "asd"
 }
 
 resource "aws_ec2_host" "host" {
@@ -19,6 +9,11 @@ resource "aws_ec2_host" "host" {
 
 module "registry_short" {
   source = "terraform-aws-modules/vpc/aws"
+  azs = ["us-west-2a"]
+}
+
+resource "aws_ec2_host" "host3" {
+  availability_zone = module.registry_short.azs
 }
 
 # module "unresolved" {

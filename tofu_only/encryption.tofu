@@ -1,26 +1,13 @@
-terraform {
+variable "var1" {
+  default = "123"
+  type = string
+}
 
-  encryption {
-    key_provider "pbkdf2" "foo" {
-      passphrase = "sdsdsadsdADADASDASDSsddsdfsdfwewfeffwfew"
-      key_length = 32
-      hash_function = "sha256"
-    }
+resource "aws_ec2_host" "host1" {
+  availability_zone = data.aws_ec2_host.sd3.availability_zone
+  id = "id33"
+}
 
-    method "unencrypted" "s" {}
-
-    method "aes_gcm" "sd" {
-      keys = key_provider.pbkdf2.foo
-    }
-
-    state {
-      method = method.aes_gcm.sd
-    }
-
-    plan {
-      method = method.unencrypted.s
-    }
-
-  }
-
+data "aws_ec2_host" "sd3" {
+  id = aws_ec2_host.host1.id
 }

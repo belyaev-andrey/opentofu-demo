@@ -42,7 +42,7 @@ module "iam2" {
 }
 
 module "iam3" {
-  source = "${local.src2}"
+  source        = "${local.src2}"
   account_alias = ""
 }
 

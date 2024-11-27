@@ -8,17 +8,15 @@ terraform {
   }
   required_providers {
     docker = {
-      source  = "kreuzwerker/docker"
-      version = "3.0.2"
+      source = "kreuzwerker/docker"
+    }
+    aws = {
+      source = "registry.opentofu.org/hashicorp/aws"
     }
   }
+
 }
 
-resource "docker_image" "img" {
-  name = ""
+resource "aws_s3_bucket" "bucket" {
+  bucket = "bucket"
 }
-
-resource "aws_ec2_host" "sd" {
-  availability_zone = ""
-}
-

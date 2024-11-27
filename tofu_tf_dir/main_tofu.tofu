@@ -4,12 +4,12 @@ provider "docker" {
 
 resource "aws_ec2_host" "host" {
   availability_zone = "us-west-2a"
-  instance_type = "t2.medium"
+  instance_type     = "t2.medium"
 }
 
 module "registry_short" {
   source = "terraform-aws-modules/vpc/aws"
-  azs = ["us-west-2a"]
+  azs    = ["us-west-2a"]
 }
 
 resource "aws_ec2_host" "host3" {
